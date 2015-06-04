@@ -16,7 +16,7 @@
     "symfony/console": "~2.5",
     "simple-bus/symfony-bridge": "*",
     "simple-bus/doctrine-orm-bridge": "*",
-    "farconada/helpers-bundle": "*"
+    "farconada/helpers-bundle": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "*",
