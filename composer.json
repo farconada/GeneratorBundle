@@ -1,0 +1,35 @@
+{
+  "name": "farconada/generator-bundle",
+  "description": "This bundle generates code for you, Fer style",
+  "keywords": [],
+  "type": "symfony-bundle",
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "Fernando Arconada",
+      "email": "fernando.arconada@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/serializer": "~2.7",
+    "jms/di-extra-bundle": "dev-master",
+    "symfony/console": "~2.5",
+    "simple-bus/symfony-bridge": "*",
+    "memio/memio": "*",
+    "simple-bus/doctrine-orm-bridge": "*"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "*",
+    "doctrine/doctrine-fixtures-bundle": "2.2.*"
+  },
+  "autoload": {
+    "psr-0": { "Fer\\GeneratorBundle": "" }
+  },
+  "target-dir": "Fer/GeneratorBundle",
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
