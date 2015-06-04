@@ -12,11 +12,12 @@
   ],
   "require": {
     "symfony/serializer": "~2.7",
-    "jms/di-extra-bundle": "dev-master",
+    "jms/di-extra-bundle": "*",
     "symfony/console": "~2.5",
     "simple-bus/symfony-bridge": "*",
     "memio/memio": "*",
-    "simple-bus/doctrine-orm-bridge": "*"
+    "simple-bus/doctrine-orm-bridge": "*",
+    "farconada/helpers-bundle": "*"
   },
   "require-dev": {
     "fzaninotto/faker": "*",
