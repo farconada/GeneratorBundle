@@ -16,12 +16,12 @@
     "symfony/console": "~2.5",
     "simple-bus/symfony-bridge": "*",
     "simple-bus/doctrine-orm-bridge": "*",
-    "farconada/helpers-bundle": "dev-master"
-  },
-  "require-dev": {
+    "farconada/helpers-bundle": "dev-master",
     "fzaninotto/faker": "*",
     "memio/memio": "*",
-    "doctrine/doctrine-fixtures-bundle": "2.2.*"
+    "doctrine/doctrine-fixtures-bundle": "dev-master"
+  },
+  "require-dev": {
   },
   "autoload": {
     "psr-0": { "Fer\\GeneratorBundle": "" }
