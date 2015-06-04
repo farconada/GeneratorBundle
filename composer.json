@@ -12,15 +12,15 @@
   ],
   "require": {
     "symfony/serializer": "~2.7",
-    "jms/di-extra-bundle": "*",
+    "jms/di-extra-bundle": "~1.5",
     "symfony/console": "~2.5",
     "simple-bus/symfony-bridge": "*",
-    "memio/memio": "*",
     "simple-bus/doctrine-orm-bridge": "*",
     "farconada/helpers-bundle": "*"
   },
   "require-dev": {
     "fzaninotto/faker": "*",
+    "memio/memio": "*",
     "doctrine/doctrine-fixtures-bundle": "2.2.*"
   },
   "autoload": {
