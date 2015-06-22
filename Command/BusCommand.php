@@ -38,13 +38,12 @@ class BusCommand extends ContainerAwareCommand {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $commandName = $input->getArgument('command-name');
-        $this->generateCommandHandler($commandName);
-        //$this->generateDefaultCommand();
-        $this->generateCommandMessage($commandName);
-        $this->installCommandService($commandName);
+        $this->generateCommandHandler($output, $commandName);
+        $this->generateCommandMessage($output, $commandName);
+        $this->installCommandService($output, $commandName);
     }
 
-    protected function generateCommandHandler($commandName)
+    protected function generateCommandHandler(OutputInterface $output, $commandName)
     {
 
         $file = File::make('src/AppBundle/Command/Handler/'.$commandName.'Handler.php')
@@ -65,15 +64,15 @@ class BusCommand extends ContainerAwareCommand {
         $prettyPrinter = Build::prettyPrinter();
         $generatedCode = $prettyPrinter->generateCode($file);
 
-        $this->writeFile($this->getContainer()->getParameter('kernel.root_dir') . '/../' . $file->getFilename(), $generatedCode);
+        $this->writeFile($output, $this->getContainer()->getParameter('kernel.root_dir') . '/../' . $file->getFilename(), $generatedCode);
     }
 
-    protected function generateCommandMessage($commandName)
+    protected function generateCommandMessage(OutputInterface $output, $commandName)
     {
-        $file = File::make('src/AppBundle/Command/Message/'. $commandName .'.php')
+        $file = File::make('src/AppBundle/Command/Message/'. $commandName .'Command.php')
             ->addFullyQualifiedName(FullyQualifiedName::make('Fer\HelpersBundle\CQRS\DefaultCommand'))
             ->setStructure(
-                Object::make('AppBundle\Command\Message\\'.$commandName)
+                Object::make('AppBundle\Command\Message\\'.$commandName. 'Command')
                     ->addConstant(
                         Constant::make('COMMAND_NAME', "'". $commandName ."'")
                     )
@@ -85,37 +84,12 @@ class BusCommand extends ContainerAwareCommand {
         $prettyPrinter = Build::prettyPrinter();
         $generatedCode = $prettyPrinter->generateCode($file);
 
-        $this->writeFile($this->getContainer()->getParameter('kernel.root_dir') . '/../' . $file->getFilename(), $generatedCode);
+        $this->writeFile($output, $this->getContainer()->getParameter('kernel.root_dir') . '/../' . $file->getFilename(), $generatedCode);
 
     }
 
-    protected function generateDefaultCommand()
-    {
-        $file = File::make('src/AppBundle/Command/Message/DefaultCommand.php')
-            ->addFullyQualifiedName(FullyQualifiedName::make('SimpleBus\Message\Name\NamedMessage'))
-            ->setStructure(
-                Object::make('AppBundle\Command\Message\DefaultCommand')
-                    ->makeAbstract()
-                    ->addConstant(
-                        Constant::make('COMMAND_NAME', "'the value'")
-                    )
-                    ->implement(Contract::make('SimpleBus\Message\Name\NamedMessage'))
-                    ->addMethod(
-                        Method::make('messageName')
-                        ->setBody('return static::COMMAND_NAME;')
-                        ->makeStatic()
-                    )
-            )
-        ;
 
-        // Generate the code and display in the console
-        $prettyPrinter = Build::prettyPrinter();
-        $generatedCode = $prettyPrinter->generateCode($file);
-
-        $this->writeFile($this->getContainer()->getParameter('kernel.root_dir') . '/../' . $file->getFilename(), $generatedCode);
-    }
-
-    public function installCommandService($commandName)
+    public function installCommandService(OutputInterface $output, $commandName)
     {
         $serviceCommandName = 'command_handler_' .strtolower($commandName) ;
         $commands = [
@@ -151,13 +125,16 @@ class BusCommand extends ContainerAwareCommand {
 
     }
 
-    protected function writeFile($filePath, $content)
+    protected function writeFile(OutputInterface $output, $filePath, $content)
     {
         @mkdir(dirname($filePath), 0777, true);
         if (!file_exists($filePath)) {
             file_put_contents($filePath, $content);
+            $output->writeln('<fg=green>Creado fichero: ' . $filePath . '</fg=green>');
             return true;
         }
+        $output->writeln('<fg=yellow>Ya existía el fichero: ' . $filePath . '</fg=yellow>');
+
     }
 
 }
