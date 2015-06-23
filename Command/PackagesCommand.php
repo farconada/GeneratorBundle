@@ -50,6 +50,10 @@ class PackagesCommand extends ContainerAwareCommand {
             [
                 'namespace' => 'SimpleBus\\SymfonyBridge',
                 'bundle'    => 'DoctrineOrmBridgeBundle',
+            ],
+            [
+                'namespace' => 'Tbbc\\RestUtilBundle',
+                'bundle'    => 'TbbcRestUtilBundle',
             ]
         ];
 

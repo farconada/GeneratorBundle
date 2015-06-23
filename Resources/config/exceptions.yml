@@ -1,0 +1,11 @@
+tbbc_rest_util:
+    error:
+        use_bundled_factories: true
+        exception_mapping:
+            Array2CommandConverterException:
+                class: "Fer\\HelpersBundle\\Exception\\Array2CommandConverterException"
+                factory: validation_errors
+                http_status_code: 400
+                error_code: 400101
+                error_message: "Invalid input"
+                error_more_info_url: ""
