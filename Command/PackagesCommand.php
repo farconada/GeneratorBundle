@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Fer\GeneratorBundle\Util\KernelManipulator;
+use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser;
 use Symfony\Component\Yaml\Dumper;
 
@@ -54,6 +55,7 @@ class PackagesCommand extends ContainerAwareCommand {
             [
                 'namespace' => 'Tbbc\\RestUtilBundle',
                 'bundle'    => 'TbbcRestUtilBundle',
+                'config'    => 'exceptions.yml'
             ]
         ];
 
@@ -109,6 +111,27 @@ class PackagesCommand extends ContainerAwareCommand {
         $dumper = new Dumper();
         file_put_contents($config, $dumper->dump($yamlConfig, 2));
 
+    }
+
+    protected function configChanges(OutputInterface $output, $kernel)
+    {
+        $output->writeln(sprintf("Changing Symfony config"));
+        $config = $this->getContainer()->getParameter('kernel.root_dir').'/config/config.yml';
+        $yaml = new Parser();
+        try {
+            $yamlConfig = $yaml->parse(file_get_contents($config));
+        } catch (ParseException $e) {
+            printf("Unable to parse the YAML string: %s", $e->getMessage());
+        }
+
+        if(!isset($yamlConfig['framework']['serializer']['enabled'])){
+            $yamlConfig['framework']['serializer']['enabled'] = true;
+            $output->writeln(sprintf("Enabling Symfony serializer"));
+        }
+
+
+        $dumper = new Dumper();
+        file_put_contents($config, $dumper->dump($yamlConfig, 2));
     }
 
 
