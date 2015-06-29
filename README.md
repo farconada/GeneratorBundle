@@ -22,3 +22,18 @@ Genera una serie de clases necesarias para gestionar comandos:
 - Crea el EjemploCommandHandler
 - Crea el EjemploCommand
 - Crea el servicio en bus_config.yml para asociar el Handler y el Command
+
+### fer:aggregate:generate
+
+Genera una serie de clases para gestionar entidades:
+
+- Crea la Entidad
+- Crea la EntidadId
+- Crea el EntidadRepository
+- Crea el EntidadRepositoryInterface
+- Crea un controlador EntidadController
+
+ToDo:
+
+- Asociar traits
+- Declarar el repository como servicio
