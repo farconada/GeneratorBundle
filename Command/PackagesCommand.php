@@ -56,6 +56,11 @@ class PackagesCommand extends ContainerAwareCommand {
                 'namespace' => 'Tbbc\\RestUtilBundle',
                 'bundle'    => 'TbbcRestUtilBundle',
                 'config'    => 'exceptions.yml'
+            ],
+            [
+                'namespace' => 'Lexik\\Bundle\\JWTAuthenticationBundle',
+                'bundle'    => 'LexikJWTAuthenticationBundle',
+                'config'    => 'jwt_security.yml'
             ]
         ];
 
