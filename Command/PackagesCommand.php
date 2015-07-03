@@ -66,7 +66,18 @@ class PackagesCommand extends ContainerAwareCommand {
                 'namespace' => 'Nelmio\\CorsBundle',
                 'bundle'    => 'NelmioCorsBundle',
                 'config'    => 'cors.yml'
-            ]
+            ],
+            [
+                'namespace' => 'Noxlogic\\RateLimitBundle',
+                'bundle'    => 'NoxlogicRateLimitBundle',
+                'config'    => 'rate_limit.yml'
+            ],
+            [
+                'namespace' => 'Doctrine\\Bundle\DoctrineCacheBundle',
+                'bundle'    => 'DoctrineCacheBundle',
+                'config'    => 'cache.yml'
+            ],
+
         ];
 
         foreach ($bundles as $bundle) {

@@ -14,15 +14,17 @@
     "symfony/serializer": "~2.7",
     "jms/di-extra-bundle": "~1.5",
     "symfony/console": "~2.5",
-    "simple-bus/symfony-bridge": "*",
-    "simple-bus/doctrine-orm-bridge": "*",
+    "simple-bus/symfony-bridge": "^4.0",
+    "simple-bus/doctrine-orm-bridge": "^4.0",
     "farconada/helpers-bundle": "dev-master",
     "fzaninotto/faker": "*",
     "memio/memio": "*",
     "doctrine/doctrine-fixtures-bundle": "dev-master",
     "tbbc/rest-util-bundle": "^1.0",
     "lexik/jwt-authentication-bundle": "^1.0",
-    "nelmio/cors-bundle": "^1.4"
+    "nelmio/cors-bundle": "^1.4",
+    "noxlogic/ratelimit-bundle": "^1.5",
+    "doctrine/doctrine-cache-bundle": "^1.0"
   },
   "require-dev": {
   },

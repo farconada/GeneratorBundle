@@ -1,0 +1,5 @@
+doctrine_cache:
+    providers:
+        rate_limit_cache:
+            type: apc
+            namespace: ratelimit_cache_ns
