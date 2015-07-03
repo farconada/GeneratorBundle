@@ -21,7 +21,8 @@
     "memio/memio": "*",
     "doctrine/doctrine-fixtures-bundle": "dev-master",
     "tbbc/rest-util-bundle": "^1.0",
-    "lexik/jwt-authentication-bundle": "^1.0"
+    "lexik/jwt-authentication-bundle": "^1.0",
+    "nelmio/cors-bundle": "^1.4"
   },
   "require-dev": {
   },

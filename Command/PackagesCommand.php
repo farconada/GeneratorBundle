@@ -61,6 +61,11 @@ class PackagesCommand extends ContainerAwareCommand {
                 'namespace' => 'Lexik\\Bundle\\JWTAuthenticationBundle',
                 'bundle'    => 'LexikJWTAuthenticationBundle',
                 'config'    => 'jwt_security.yml'
+            ],
+            [
+                'namespace' => 'Nelmio\\CorsBundle',
+                'bundle'    => 'NelmioCorsBundle',
+                'config'    => 'cors.yml'
             ]
         ];
 
