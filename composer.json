@@ -19,7 +19,7 @@
     "farconada/helpers-bundle": "^1.0",
     "fzaninotto/faker": "*",
     "memio/memio": "*",
-    "doctrine/doctrine-fixtures-bundle": "dev-master",
+    "doctrine/doctrine-fixtures-bundle": "^2.2",
     "tbbc/rest-util-bundle": "^1.0",
     "lexik/jwt-authentication-bundle": "^1.0",
     "nelmio/cors-bundle": "^1.4",
