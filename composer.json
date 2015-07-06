@@ -16,7 +16,7 @@
     "symfony/console": "~2.5",
     "simple-bus/symfony-bridge": "^4.0",
     "simple-bus/doctrine-orm-bridge": "^4.0",
-    "farconada/helpers-bundle": "dev-master",
+    "farconada/helpers-bundle": "^1.0",
     "fzaninotto/faker": "*",
     "memio/memio": "*",
     "doctrine/doctrine-fixtures-bundle": "dev-master",
