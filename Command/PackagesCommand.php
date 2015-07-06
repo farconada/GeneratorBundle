@@ -89,6 +89,9 @@ class PackagesCommand extends ContainerAwareCommand {
 
         }
         $output->writeln(sprintf("Tip: enable services commented on services.yml from HelpersBundle (copy/paste to app/config/services.yml)"));
+        $output->writeln(sprintf("Tip: generate a private key for JWT tokens in app/ (openssl genrsa -out private.pem -aes256 4096)"));
+        $output->writeln(sprintf("Tip: generate a public key for JWT tokens in app/ (openssl rsa -pubout -in private.pem -out public.pem)"));
+        $output->writeln(sprintf("Tip: a composer update is recommended"));
     }
 
     protected function updateKernel(OutputInterface $output, $kernel, $namespace, $bundle, $params = null)
