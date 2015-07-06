@@ -88,6 +88,7 @@ class PackagesCommand extends ContainerAwareCommand {
             }
 
         }
+        $output->writeln(sprintf("Tip: enable services commented on services.yml from HelpersBundle (copy/paste to app/config/services.yml)"));
     }
 
     protected function updateKernel(OutputInterface $output, $kernel, $namespace, $bundle, $params = null)
