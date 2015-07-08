@@ -3,3 +3,6 @@ doctrine_cache:
         rate_limit_cache:
             type: apc
             namespace: ratelimit_cache_ns
+        csrf_cache:
+            type: apc
+            namespace: csrf_cache
