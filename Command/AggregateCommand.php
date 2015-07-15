@@ -43,10 +43,10 @@ class AggregateCommand extends ContainerAwareCommand {
 
     protected function generateAggregateId(OutputInterface $output, $aggregateName)
     {
-        $file = File::make('src/AppBundle/Model/'. $aggregateName .'Id.php')
+        $file = File::make('src/AppBundle/Entity/'. $aggregateName .'Id.php')
             ->addFullyQualifiedName(FullyQualifiedName::make('Fer\HelpersBundle\CQRS\AggregateIdInterface'))
             ->setStructure(
-                Object::make('AppBundle\Model\\'.$aggregateName . 'Id')
+                Object::make('AppBundle\Entity\\'.$aggregateName . 'Id')
                     ->implement(Contract::make('Fer\HelpersBundle\CQRS\AggregateIdInterface'))
             )
         ;
@@ -60,9 +60,9 @@ class AggregateCommand extends ContainerAwareCommand {
 
     public function generateAggregateEntity(OutputInterface $output, $aggregateName)
     {
-        $file = File::make('src/AppBundle/Model/'. $aggregateName .'.php')
+        $file = File::make('src/AppBundle/Entity/'. $aggregateName .'.php')
             ->setStructure(
-                Object::make('AppBundle\Model\\'.$aggregateName)
+                Object::make('AppBundle\Entity\\'.$aggregateName)
             )
         ;
 
@@ -75,10 +75,10 @@ class AggregateCommand extends ContainerAwareCommand {
 
     protected function generateRepositoryInterface(OutputInterface $output, $aggregateName)
     {
-        $file = File::make('src/AppBundle/Model/'. $aggregateName .'RepositoryInterface.php')
+        $file = File::make('src/AppBundle/Entity/'. $aggregateName .'RepositoryInterface.php')
             ->addFullyQualifiedName(FullyQualifiedName::make('Fer\HelpersBundle\CQRS\RepositoryInterface'))
             ->setStructure(
-                Contract::make('AppBundle\Model\\'.$aggregateName . 'RepositoryInterface')
+                Contract::make('AppBundle\Entity\\'.$aggregateName . 'RepositoryInterface')
                 ->extend(Contract::make('Fer\HelpersBundle\CQRS\RepositoryInterface'))
             )
         ;
@@ -92,11 +92,11 @@ class AggregateCommand extends ContainerAwareCommand {
 
     protected function generateRepository(OutputInterface $output, $aggregateName)
     {
-        $file = File::make('src/AppBundle/Model/'. $aggregateName .'Repository.php')
-            ->addFullyQualifiedName(FullyQualifiedName::make('AppBundle\Model\\'.$aggregateName . 'RepositoryInterface'))
+        $file = File::make('src/AppBundle/Entity/'. $aggregateName .'Repository.php')
+            ->addFullyQualifiedName(FullyQualifiedName::make('AppBundle\Entity\\'.$aggregateName . 'RepositoryInterface'))
             ->setStructure(
-                Object::make('AppBundle\Model\\'.$aggregateName . 'Repository')
-                    ->implement(Contract::make('AppBundle\Model\\'.$aggregateName . 'RepositoryInterface'))
+                Object::make('AppBundle\Entity\\'.$aggregateName . 'Repository')
+                    ->implement(Contract::make('AppBundle\Entity\\'.$aggregateName . 'RepositoryInterface'))
             )
         ;
 
