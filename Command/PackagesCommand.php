@@ -77,6 +77,10 @@ class PackagesCommand extends ContainerAwareCommand {
                 'bundle'    => 'DoctrineCacheBundle',
                 'config'    => 'cache.yml'
             ],
+            [
+                'namespace' => 'Fer\\HelpersBundle',
+                'bundle'    => 'FerHelpersBundle'
+            ],
 
         ];
 
