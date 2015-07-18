@@ -75,11 +75,12 @@ class PackagesCommand extends ContainerAwareCommand {
             [
                 'namespace' => 'Doctrine\\Bundle\DoctrineCacheBundle',
                 'bundle'    => 'DoctrineCacheBundle',
-                'config'    => 'cache.yml'
+                'config'    => 'cache.yml',
             ],
             [
                 'namespace' => 'JMS\\SerializerBundle',
-                'bundle'    => 'JMSSerializerBundle'
+                'bundle'    => 'JMSSerializerBundle',
+                'config'    => 'serializer.yml'
             ],
             [
                 'namespace' => 'Fer\\HelpersBundle',
@@ -162,9 +163,26 @@ class PackagesCommand extends ContainerAwareCommand {
             printf("Unable to parse the YAML string: %s", $e->getMessage());
         }
 
+        // deshabilitar el serializer de Symfony
         if(!isset($yamlConfig['framework']['serializer']['enabled'])){
             $yamlConfig['framework']['serializer']['enabled'] = false;
             $output->writeln(sprintf("Disabling Symfony serializer"));
+        }
+
+        // direcotrio para anotaciones de serializacion
+        @mkdir($this->getContainer()->getParameter('kernel.root_dir').'/config/serializer');
+
+$content = <<<EOT
+Fer\HelpersBundle\CQRS\BaseAggregateRoot:
+  exclusion_policy: ALL
+EOT;
+
+        $file = $this->getContainer()->getParameter('kernel.root_dir').'/config/serializer/BaseAggregateRoot.yml';
+        if (!file_exists($file)) {
+            $output->writeln(sprintf("Creando $file"));
+            file_put_contents($file, $content);
+        } else {
+            $output->writeln(sprintf("Ya existía $file"));
         }
 
 

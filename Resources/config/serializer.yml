@@ -1,0 +1,6 @@
+jms_serializer:
+    metadata:
+      directories:
+        HelpersBundle:
+          namespace_prefix: Fer\HelpersBundle\CQRS
+          path: '%kernel.root_dir%/config/serializer'
