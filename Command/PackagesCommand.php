@@ -78,6 +78,10 @@ class PackagesCommand extends ContainerAwareCommand {
                 'config'    => 'cache.yml'
             ],
             [
+                'namespace' => 'JMS\\SerializerBundle',
+                'bundle'    => 'JMSSerializerBundle'
+            ],
+            [
                 'namespace' => 'Fer\\HelpersBundle',
                 'bundle'    => 'FerHelpersBundle'
             ],
@@ -159,8 +163,8 @@ class PackagesCommand extends ContainerAwareCommand {
         }
 
         if(!isset($yamlConfig['framework']['serializer']['enabled'])){
-            $yamlConfig['framework']['serializer']['enabled'] = true;
-            $output->writeln(sprintf("Enabling Symfony serializer"));
+            $yamlConfig['framework']['serializer']['enabled'] = false;
+            $output->writeln(sprintf("Disabling Symfony serializer"));
         }
 
 
