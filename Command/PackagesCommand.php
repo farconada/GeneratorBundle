@@ -92,6 +92,10 @@ class PackagesCommand extends ContainerAwareCommand {
             }
 
         }
+
+
+        $this->configChanges($output, $this->getContainer()->get('kernel'));
+
         $output->writeln(sprintf("Tip: enable services commented on services.yml from HelpersBundle (copy/paste to app/config/services.yml)"));
         $output->writeln(sprintf("Tip: generate a private key for JWT tokens in app/ (openssl genrsa -out private.pem -aes256 4096)"));
         $output->writeln(sprintf("Tip: generate a public key for JWT tokens in app/ (openssl rsa -pubout -in private.pem -out public.pem)"));
