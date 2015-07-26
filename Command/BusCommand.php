@@ -70,13 +70,13 @@ class BusCommand extends ContainerAwareCommand {
     protected function generateCommandMessage(OutputInterface $output, $commandName)
     {
         $file = File::make('src/AppBundle/Command/Message/'. $commandName .'Message.php')
-            ->addFullyQualifiedName(FullyQualifiedName::make('Fer\HelpersBundle\CQRS\DefaultCommand'))
+            ->addFullyQualifiedName(FullyQualifiedName::make('Fer\HelpersBundle\CQRS\AbstractCommandMessage'))
             ->setStructure(
                 Object::make('AppBundle\Command\Message\\'.$commandName. 'Message')
                     ->addConstant(
                         Constant::make('COMMAND_NAME', "'". $commandName ."'")
                     )
-                    ->extend(Object::make('Fer\HelpersBundle\CQRS\DefaultCommand'))
+                    ->extend(Object::make('Fer\HelpersBundle\CQRS\AbstractCommandMessage'))
             )
         ;
 
