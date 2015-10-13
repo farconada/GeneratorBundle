@@ -3,5 +3,9 @@ doctrine_orm_bridge:
     connection: default
 
 command_bus:
-    logging: ~
+    logging: true
     command_name_resolver_strategy: named_message
+
+event_bus:
+    logging: true
+    event_name_resolver_strategy: named_message
